@@ -2,6 +2,7 @@ package com.qcloud.cos_migrate_tool.record;
 
 import com.qcloud.cos_migrate_tool.config.MigrateType;
 import com.qcloud.cos_migrate_tool.utils.HeadAttr;
+import com.qcloud.migrate_done.RecordElementInfo;
 
 public class MigrateUrllistRecordElement extends RecordElement {
     private String bucketName;
@@ -38,5 +39,10 @@ public class MigrateUrllistRecordElement extends RecordElement {
         String value = String.format("[fileSize: %d], [lastModify: %s]", headAttr.fileSize,
                 headAttr.lastModify);
         return value;
+    }
+
+    @Override
+    public RecordElementInfo buildRecord() {
+        return null;
     }
 }

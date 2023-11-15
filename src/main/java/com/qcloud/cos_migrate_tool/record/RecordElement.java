@@ -1,6 +1,7 @@
 package com.qcloud.cos_migrate_tool.record;
 
 import com.qcloud.cos_migrate_tool.config.MigrateType;
+import com.qcloud.migrate_done.RecordElementInfo;
 
 public abstract class RecordElement {
     protected MigrateType recordType;
@@ -14,9 +15,7 @@ public abstract class RecordElement {
 
     public abstract String buildValue();
 
-    public static RecordElement parseRecord(String key, String value) {
-        return null;
-    }
+    public abstract RecordElementInfo buildRecord();
 
     @Override
     public String toString() {

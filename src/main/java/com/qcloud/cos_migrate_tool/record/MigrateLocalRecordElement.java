@@ -1,6 +1,7 @@
 package com.qcloud.cos_migrate_tool.record;
 
 import com.qcloud.cos_migrate_tool.config.MigrateType;
+import com.qcloud.migrate_done.RecordElementInfo;
 
 public class MigrateLocalRecordElement extends RecordElement {
     private String bucketName;
@@ -32,5 +33,11 @@ public class MigrateLocalRecordElement extends RecordElement {
     public String buildValue() {
         String value = String.format("[mtime: %d], [fileSize: %d]", mtime,  fileSize);
         return value;
+    }
+
+    @Override
+    public RecordElementInfo buildRecord() {
+        RecordElementInfo save = new RecordElementInfo(recordType, bucketName, localPath, cosPath);
+        return save;
     }
 }

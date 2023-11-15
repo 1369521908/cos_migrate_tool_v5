@@ -1,0 +1,9 @@
+[migrate]
+# 迁移成功后写入的缓存key前缀
+cacheKey = cos:migrate
+# 当前迁移fastdfs机器ip地址(内网地址)
+machine = 10.x.x.x
+# 迁移完成是否写入redis迁移成功标记
+doneFlag = false
+# 迁移时是否写入fastdfs_cos数据库(为true时 前提是先建好库(fastdfs_cos)和表(record_element_info))
+writeDb = false

@@ -1,6 +1,7 @@
 package com.qcloud.cos_migrate_tool.record;
 
 import com.qcloud.cos_migrate_tool.config.MigrateType;
+import com.qcloud.migrate_done.RecordElementInfo;
 
 public class MigrateCopyBucketRecordElement extends RecordElement {
     private String destRegion;
@@ -41,6 +42,11 @@ public class MigrateCopyBucketRecordElement extends RecordElement {
     public String buildValue() {
         String value = String.format("[srcSize: %d], [srcEtag: %s], [srcStorageClass: %s]", srcSize, srcEtag, srcStorageClass);
         return value;
+    }
+
+    @Override
+    public RecordElementInfo buildRecord() {
+        return null;
     }
 
 }

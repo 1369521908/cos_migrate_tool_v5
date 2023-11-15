@@ -1,5 +1,42 @@
 # 迁移工具
 
+## fastdfs迁移说明
+- 如果需要单独记录下来迁移的文件到数据库请先建库(fastdfs_cos)后执行sql
+- 迁移到cos的文件默认添加了/group1/M00文件夹前缀 如果不需要
+
+## docker 部署说明
+- 创建目录
+```shell
+mkdir /cos_migrate_tool_v5
+```
+- 编译后拷贝整工程目录后解压
+
+- 构建docker镜像(如果你的服务器中已经有jdk8基础镜像 可以修改Dockerfile中的基础镜像)
+```shell
+docker-compose build
+```
+
+- 修改docker-compose中的fastdfs目录为你自己服务器中fastdfs的data目录
+```
+/xxx/fastdfs/storage/data/:/xxx/fastdfs/storage/data/
+```
+
+- [可选]如果迁移后的key需要跟原来fastdfs的fileid一致 
+请修改conf/config.ini的cosPath为/group1/M00
+其中M00为你fastdfs机器的tracker(机器) 需要根据自己fastdfs服务情况进行判断
+```
+cosPath=/group1/M00
+```
+
+- [可选]如果迁移后需要往业务服务的redis中写入
+
+- 其他需要修改的配置参考原文档即可
+
+- 启动容器
+```shell
+docker-compose up -d
+```
+
 ## 功能说明
 
 迁移工具集成了有关COS数据迁移的功能, 目前支持以下四大类迁移

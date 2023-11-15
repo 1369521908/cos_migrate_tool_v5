@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+
+  cos_migrate_tool_v5:
+    image: cos_migrate_tool_v5:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cos_migrate_tool_v5
+    environment:
+      # 时区上海
+      TZ: Asia/Shanghai
+    volumes:
+      # 请修改为自己的fastdfs路径
+      - /xxx/fastdfs/storage/data/:/xxx/fastdfs/storage/data/
+      - /cos_migrate_tool_v5/:/cos_migrate_tool_v5/
+      - /cos_migrate_tool_v5/conf/:/cos_migrate_tool_v5/conf/
+      - /cos_migrate_tool_v5/db/:/cos_migrate_tool_v5/db/
+      - /cos_migrate_tool_v5/log/:/cos_migrate_tool_v5/log/
+      - /cos_migrate_tool_v5/result/:/cos_migrate_tool_v5/result/
+      - /cos_migrate_tool_v5/tmp/:/cos_migrate_tool_v5/tmp/
+      - /cos_migrate_tool_v5/dep/:/cos_migrate_tool_v5/dep/
+    privileged: true
+    network_mode: "host"
